@@ -5,247 +5,309 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Author
+ *
+ * @ORM\Table(name="author")
  * @ORM\Entity(repositoryClass="App\Repository\AuthorRepository")
  */
 class Author
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $username;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $company;
-
-    /**
-     * @ORM\Column(type="string", length=500)
-     */
-    private $shortBio;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $phone;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $facebook;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $twitter;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $github;
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
 
 	/**
-	 * @return mixed
+	 * @var string
+	 *
+	 * @ORM\Column(name="name", type="string", length=255, unique=true)
+	 */
+	private $name;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="title", type="string", length=255)
+	 */
+	private $title;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="username", type="string", length=255, unique=true)
+	 */
+	private $username;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="company", type="string", length=255)
+	 */
+	private $company;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="short_bio", type="string", length=500)
+	 */
+	private $shortBio;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="phone", type="string", length=255, nullable=true)
+	 */
+	private $phone;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
+	 */
+	private $facebook;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
+	 */
+	private $twitter;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="github", type="string", length=255, nullable=true)
+	 */
+	private $github;
+
+
+	/**
+	 * Get id
+	 *
+	 * @return int
 	 */
 	public function getId()
-    {
-        return $this->id;
-    }
+	{
+		return $this->id;
+	}
 
 	/**
-	 * @return null|string
-	 */
-	public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-	/**
+	 * Set name
+	 *
 	 * @param string $name
 	 *
 	 * @return Author
 	 */
-	public function setName(string $name): self
-    {
-        $this->name = $name;
+	public function setName($name)
+	{
+		$this->name = $name;
 
-        return $this;
-    }
+		return $this;
+	}
 
 	/**
-	 * @return null|string
+	 * Get name
+	 *
+	 * @return string
 	 */
-	public function getTitle(): ?string
-    {
-        return $this->title;
-    }
+	public function getName()
+	{
+		return $this->name;
+	}
 
 	/**
+	 * Set title
+	 *
 	 * @param string $title
 	 *
 	 * @return Author
 	 */
-	public function setTitle(string $title): self
-    {
-        $this->title = $title;
+	public function setTitle($title)
+	{
+		$this->title = $title;
 
-        return $this;
-    }
+		return $this;
+	}
 
 	/**
-	 * @return null|string
+	 * Get title
+	 *
+	 * @return string
 	 */
-	public function getUsername(): ?string
-    {
-        return $this->username;
-    }
+	public function getTitle()
+	{
+		return $this->title;
+	}
 
 	/**
+	 * Set username
+	 *
 	 * @param string $username
 	 *
 	 * @return Author
 	 */
-	public function setUsername(string $username): self
-    {
-        $this->username = $username;
+	public function setUsername($username)
+	{
+		$this->username = $username;
 
-        return $this;
-    }
+		return $this;
+	}
 
 	/**
-	 * @return null|string
+	 * Get username
+	 *
+	 * @return string
 	 */
-	public function getCompany(): ?string
-    {
-        return $this->company;
-    }
+	public function getUsername()
+	{
+		return $this->username;
+	}
 
 	/**
+	 * Set company
+	 *
 	 * @param string $company
 	 *
 	 * @return Author
 	 */
-	public function setCompany(string $company): self
-    {
-        $this->company = $company;
+	public function setCompany($company)
+	{
+		$this->company = $company;
 
-        return $this;
-    }
+		return $this;
+	}
 
 	/**
-	 * @return null|string
+	 * Get company
+	 *
+	 * @return string
 	 */
-	public function getShortBio(): ?string
-    {
-        return $this->shortBio;
-    }
+	public function getCompany()
+	{
+		return $this->company;
+	}
 
 	/**
+	 * Set shortBio
+	 *
 	 * @param string $shortBio
 	 *
 	 * @return Author
 	 */
-	public function setShortBio(string $shortBio): self
-    {
-        $this->shortBio = $shortBio;
+	public function setShortBio($shortBio)
+	{
+		$this->shortBio = $shortBio;
 
-        return $this;
-    }
+		return $this;
+	}
 
 	/**
-	 * @return null|string
+	 * Get shortBio
+	 *
+	 * @return string
 	 */
-	public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
+	public function getShortBio()
+	{
+		return $this->shortBio;
+	}
 
 	/**
-	 * @param null|string $phone
+	 * Set phone
+	 *
+	 * @param string $phone
 	 *
 	 * @return Author
 	 */
-	public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
+	public function setPhone($phone)
+	{
+		$this->phone = $phone;
 
-        return $this;
-    }
+		return $this;
+	}
 
 	/**
-	 * @return null|string
+	 * Get phone
+	 *
+	 * @return string
 	 */
-	public function getFacebook(): ?string
-    {
-        return $this->facebook;
-    }
+	public function getPhone()
+	{
+		return $this->phone;
+	}
 
 	/**
-	 * @param null|string $facebook
+	 * Set facebook
+	 *
+	 * @param string $facebook
 	 *
 	 * @return Author
 	 */
-	public function setFacebook(?string $facebook): self
-    {
-        $this->facebook = $facebook;
+	public function setFacebook($facebook)
+	{
+		$this->facebook = $facebook;
 
-        return $this;
-    }
+		return $this;
+	}
 
 	/**
-	 * @return null|string
+	 * Get facebook
+	 *
+	 * @return string
 	 */
-	public function getTwitter(): ?string
-    {
-        return $this->twitter;
-    }
+	public function getFacebook()
+	{
+		return $this->facebook;
+	}
 
 	/**
-	 * @param null|string $twitter
+	 * Set twitter
+	 *
+	 * @param string $twitter
 	 *
 	 * @return Author
 	 */
-	public function setTwitter(?string $twitter): self
-    {
-        $this->twitter = $twitter;
+	public function setTwitter($twitter)
+	{
+		$this->twitter = $twitter;
 
-        return $this;
-    }
+		return $this;
+	}
 
 	/**
-	 * @return null|string
+	 * Get twitter
+	 *
+	 * @return string
 	 */
-	public function getGithub(): ?string
-    {
-        return $this->github;
-    }
+	public function getTwitter()
+	{
+		return $this->twitter;
+	}
 
 	/**
-	 * @param null|string $github
+	 * Set github
+	 *
+	 * @param string $github
 	 *
 	 * @return Author
 	 */
-	public function setGithub(?string $github): self
-    {
-        $this->github = $github;
+	public function setGithub($github)
+	{
+		$this->github = $github;
 
-        return $this;
-    }
+		return $this;
+	}
+
+	/**
+	 * Get github
+	 *
+	 * @return string
+	 */
+	public function getGithub()
+	{
+		return $this->github;
+	}
 }
