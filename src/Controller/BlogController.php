@@ -10,7 +10,7 @@ class BlogController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function index()
+    public function indexAction()
     {
         return $this->render('blog/index.html.twig', [
             'controller_name' => 'BlogController',
