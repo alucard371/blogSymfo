@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controller;
+use App\Entity\BlogPost;
+use App\Form\EntryFormType;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -62,4 +64,36 @@ class AdminController extends Controller
             'form' => $form->createView()
         ]);
     }
+
+	/**
+	 * @Route("/create-entry", name="admin_create_entry")
+	 *
+	 * @param Request $request
+	 *
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function createEntryAction(Request $request)
+	{
+		$blogPost = new BlogPost();
+
+		$author = $this->authorRepository->findOneByUsername($this->getUser()->getUserName());
+		$blogPost->setAuthor($author);
+
+		$form = $this->createForm(EntryFormType::class, $blogPost);
+		$form->handleRequest($request);
+
+		// Check is valid
+		if ($form->isSubmitted() && $form->isValid()) {
+			$this->entityManager->persist($blogPost);
+			$this->entityManager->flush($blogPost);
+
+			$this->addFlash('success', 'Congratulations! Your post is created');
+
+			return $this->redirectToRoute('admin_entries');
+		}
+
+		return $this->render('admin/entry_form.html.twig', [
+			'form' => $form->createView()
+		]);
+	}
 }
